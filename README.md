@@ -47,21 +47,44 @@ The server communicates via **stdio**, so it is fully compatible with any MCP-en
 
 ---
 
-## Example Tools
+## Connecting the Filesystem MCP Server to Claude Desktop (This example is done on Mac)
 
-- `read_text_file(path, head=None, tail=None)`: Read text file contents with optional head/tail line limits  
-- `read_media_file(path)`: Read media file, return MIME type and Base64  
-- `write_file(path, content)`: Overwrite or create a new file  
-- `edit_file(path, edits, dry_run=False)`: Apply text edits, show git-style diff  
-- `create_directory(path)`: Create directory (recursively)  
-- `list_directory(path)`: List files and directories  
-- `list_directory_with_sizes(path, sort_by="name"|"size")`: List files with size info  
-- `directory_tree(path, exclude_patterns=None)`: Recursive JSON directory tree  
-- `search_files(path, pattern, exclude_patterns=None)`: Find files by glob pattern  
-- `get_file_info(path)`: Detailed file metadata  
-- `list_allowed_directories()`: Show configured accessible directories  
+To connect this Python-based Secure Filesystem MCP Server to **Claude Desktop**, follow these steps:
+
+1. Make sure the server runs correctly on its own:  
+   ```bash
+   uv run /absolute/path/to/fileServer.py /absolute/path/to/allowed/directory
+   ```
+2. Open your **Claude MCP configuration file**:
+   - Open Claud Desktop
+   - Go to Settings
+   - Go to Developer
+   - Click Edit Config
+   - Open claude_desktop_config.json
+   - Paste/Add the following configuration:
+     ```json
+     {
+       "mcpServers": {
+         "filesystem": {
+           "command": "/Users/USERNAME/.local/bin/uv",
+             "args": [
+               "run",
+               "/absolute/path/to/fileServer.py",
+               "/absolute/path/to/allowed/directory"
+             ]
+         }
+       }
+     }
+     ```
+4. Save the file.
+5. **Fully restart Claude** to reload your updated MCP configuration.
+6. Start a new chat — Claude should now automatically detect your MCP filesystem server and list it as an available tool.
+
+📝 **Tip:**  
+Use absolute paths and choose directories you’re comfortable granting full read/write access to.
 
 ---
+
 
 ## Security Model
 
