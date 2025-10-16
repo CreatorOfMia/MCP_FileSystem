@@ -80,7 +80,7 @@ To connect this Python-based Secure Filesystem MCP Server to **Claude Desktop**,
 5. **Fully restart Claude** to reload your updated MCP configuration.
 6. Start a new chat — Claude should now automatically detect your MCP filesystem server and list it as an available tool.
 
-📝 **Tip:**  
+**Tip:**  
 Use absolute paths and choose directories you’re comfortable granting full read/write access to.
 
 ---
