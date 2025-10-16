@@ -40,6 +40,8 @@ uv run fileServer.py /path/to/allowed/dir [more/dirs...]
 
 # Or plain Python
 python3 fileServer.py /path/to/allowed/dir [more/dirs...]
+```
+
 
 The server communicates via **stdio**, so it is fully compatible with any MCP-enabled client.
 
